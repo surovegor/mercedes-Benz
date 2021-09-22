@@ -3,16 +3,15 @@ const btns = document.querySelectorAll(".feature__link"),
 
 btns.forEach((btnItem, index) => {
     btnItem.addEventListener("click", () => {
-        btns.forEach((btnItem) => {
-            btnItem.classList.remove("feature__link_active");
-        });
-
-        btnItem.classList.add("feature__link_active");
-
-        lists.forEach((listItem) => {
-            listItem.classList.add("hidden");
-        });
-
-        lists[index].classList.remove("hidden");
+        btns.forEach((btnI, i) => {
+            if(btnItem === btnI) {
+                btnItem.classList.toggle("feature__link_active")
+                lists[i].classList.toggle("hidden")
+            } else {
+                btnI.classList.remove("feature__link_active");
+                lists[i].classList.add("hidden");
+            }
+         });
     });
 });
+
